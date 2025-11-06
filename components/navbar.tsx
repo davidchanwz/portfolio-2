@@ -11,16 +11,10 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
+import { NAV_ITEMS, PERSONAL_INFO, SECTION_IDS } from "@/lib/constants";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-
-    const navItems = [
-        { name: "About", href: "#about" },
-        { name: "Experience", href: "#experience" },
-        { name: "Projects", href: "#projects" },
-        { name: "Contact", href: "#contact" },
-    ];
 
     const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
@@ -40,25 +34,25 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16 sm:h-20">
                     {/* Logo */}
-                    <div className="shrink-0 ml-10 sm:ml-16 md:ml-21">
+                    <div className="shrink-0">
                         <a
-                            href="#home"
-                            onClick={(e) => handleSmoothScroll(e, "#home")}
-                            className="text-2xl font-bold text-blacthe k"
+                            href={`#${SECTION_IDS.HOME}`}
+                            onClick={(e) => handleSmoothScroll(e, `#${SECTION_IDS.HOME}`)}
+                            className="text-2xl font-bold text-black"
                         >
-                            David Chan
+                            {PERSONAL_INFO.displayName}
                         </a>
                     </div>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:block">
-                        <div className="flex items-baseline space-x-8 mr-21">
-                            {navItems.map((item) => (
+                        <div className="flex items-baseline space-x-8">
+                            {NAV_ITEMS.map((item) => (
                                 <a
                                     key={item.name}
                                     href={item.href}
                                     onClick={(e) => handleSmoothScroll(e, item.href)}
-                                    className="text-black hover:text-gray-700 px-3 py-2 text-2xl font-medium transition-colors duration-200"
+                                    className="text-black hover:text-gray-700 px-3 py-2 text-sm font-medium transition-all duration-200 hover:underline underline-offset-4"
                                 >
                                     {item.name}
                                 </a>
@@ -83,11 +77,11 @@ const Navbar = () => {
                                     </SheetDescription>
                                 </SheetHeader>
                                 <div className="mt-8 space-y-4">
-                                    {navItems.map((item) => (
+                                    {NAV_ITEMS.map((item) => (
                                         <a
                                             key={item.name}
                                             href={item.href}
-                                            className="block text-black hover:text-gray-700 px-3 py-2 text-base font-medium transition-colors duration-200"
+                                            className="block text-black hover:text-gray-700 px-3 py-2 text-base font-medium transition-all duration-200 hover:underline underline-offset-4"
                                             onClick={(e) => {
                                                 handleSmoothScroll(e, item.href);
                                                 setIsOpen(false);

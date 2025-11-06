@@ -1,12 +1,14 @@
 "use client";
 
-import { Github, Linkedin } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { PERSONAL_INFO, CONTACT_INFO, CV_INFO, SECTION_IDS } from "@/lib/constants";
 
 const Hero = () => {
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center bg-white pt-16 sm:pt-20 lg:pt-0">
+        <section id={SECTION_IDS.HOME} className="min-h-screen flex items-center justify-center bg-white pt-16 sm:pt-20 lg:pt-0">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col lg:flex-row items-center justify-center gap-12 sm:gap-10 lg:gap-16">
                     {/* Profile Image */}
@@ -15,12 +17,12 @@ const Hero = () => {
                             <div className="w-full h-full rounded-full bg-gray-200 border-4 border-white shadow-lg overflow-hidden">
                                 {/* Placeholder for profile image - you'll need to add your actual image */}
                                 <div className="w-full h-full bg-linear-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                                    <span className="text-gray-600 font-semibold text-3xl sm:text-4xl lg:text-6xl">DC</span>
+                                    <span className="text-gray-600 font-semibold text-3xl sm:text-4xl lg:text-6xl">{PERSONAL_INFO.initials}</span>
                                 </div>
 
                                 <Image
-                                    src="/david.jpg"
-                                    alt="David Chan"
+                                    src={PERSONAL_INFO.profileImage}
+                                    alt={PERSONAL_INFO.profileImageAlt}
                                     fill
                                     className="object-cover rounded-full"
                                     priority
@@ -35,21 +37,29 @@ const Hero = () => {
                         {/* Greeting and Title */}
                         <div className="mb-8">
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-gray-900 mb-4">
-                                Hello, I&apos;m <span className="font-semibold">David</span>
+                                Hello, I&apos;m <span className="font-semibold">{PERSONAL_INFO.name}</span>
                             </h1>
                             <p className="text-xl sm:text-2xl text-gray-600 font-light">
-                                Software Engineer
+                                {PERSONAL_INFO.title}
                             </p>
                         </div>
 
                         {/* Action Buttons */}
-                        <div className="space-y-6">
+                        <div className="space-y-4">
                             {/* Primary Buttons */}
                             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                                 <Button
                                     size="lg"
                                     className="w-full sm:w-auto px-8 py-3 bg-gray-900 hover:bg-gray-700 text-white font-medium rounded-full cursor-pointer transition-all duration-200 hover:scale-105"
-                                    onClick={() => window.location.href = 'mailto:your-email@example.com'}
+                                    onClick={() => {
+                                        const element = document.getElementById(SECTION_IDS.CONTACT);
+                                        if (element) {
+                                            element.scrollIntoView({
+                                                behavior: 'smooth',
+                                                block: 'start',
+                                            });
+                                        }
+                                    }}
                                 >
                                     Contact Me
                                 </Button>
@@ -58,10 +68,11 @@ const Hero = () => {
                                     variant="outline"
                                     className="w-full sm:w-auto px-8 py-3 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-medium rounded-full cursor-pointer transition-all duration-200 hover:scale-105"
                                     onClick={() => {
-                                        // Replace with your CV download link
+                                        // Google Drive direct download link
                                         const link = document.createElement('a');
-                                        link.href = '/davidchan_resume.pdf';
-                                        link.download = 'David-Chan-CV.pdf';
+                                        link.href = CV_INFO.downloadUrl;
+                                        link.download = CV_INFO.filename;
+                                        link.target = '_blank';
                                         link.click();
                                     }}
                                 >
@@ -70,23 +81,17 @@ const Hero = () => {
                             </div>
 
                             {/* Secondary Buttons */}
-                            <div className="flex gap-4 justify-center items-center">
-                                <Button
-                                    variant="ghost"
-                                    size="icon"
-                                    className="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded-full cursor-pointer transition-all duration-200 hover:scale-110"
-                                    onClick={() => window.open('https://linkedin.com/in/davidchanwz', '_blank')}
-                                >
-                                    <Linkedin className="h-6 w-6" />
-                                </Button>
-                                <Button
-                                    variant="ghost"
-                                    size="icon"
-                                    className="w-10 h-10 bg-gray-900 hover:bg-black text-white hover:text-white rounded-full cursor-pointer transition-all duration-200 hover:scale-110"
-                                    onClick={() => window.open('https://github.com/davidchanwz', '_blank')}
-                                >
-                                    <Github className="h-6 w-6" />
-                                </Button>
+                            <div className="flex gap-6 justify-center items-center">
+                                <FontAwesomeIcon
+                                    icon={faLinkedin}
+                                    className="text-2xl text-blue-600 hover:text-blue-700 cursor-pointer transition-all duration-200 hover:scale-110"
+                                    onClick={() => window.open(CONTACT_INFO.linkedin.url, '_blank')}
+                                />
+                                <FontAwesomeIcon
+                                    icon={faGithub}
+                                    className="text-2xl text-gray-900 hover:text-black cursor-pointer transition-all duration-200 hover:scale-110"
+                                    onClick={() => window.open(CONTACT_INFO.github.url, '_blank')}
+                                />
                             </div>
                         </div>
                     </div>

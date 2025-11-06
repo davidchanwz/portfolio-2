@@ -1,15 +1,12 @@
 "use client";
 
-"use client";
+import { PERSONAL_INFO, SECTION_IDS, getYearsOfExperience } from "@/lib/constants";
 
 const About = () => {
-    // Calculate years of experience dynamically from 2022 to current year
-    const currentYear = new Date().getFullYear();
-    const startYear = 2023;
-    const yearsOfExperience = currentYear - startYear;
+    const yearsOfExperience = getYearsOfExperience();
 
     return (
-        <section id="about" className="min-h-screen flex items-center justify-center bg-white py-20">
+        <section id={SECTION_IDS.ABOUT} className="min-h-screen flex items-center justify-center bg-white py-20">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Title */}
                 <div className="text-center mb-16">
@@ -28,8 +25,8 @@ const About = () => {
                         <div className="flex flex-col items-center lg:items-end lg:pr-8">
                             <div className="text-center lg:text-right">
                                 <h3 className="text-2xl font-semibold text-gray-900 mb-8">Education</h3>
-                                <h4 className="text-xl font-medium text-gray-900 whitespace-nowrap">BSc Business Analytics</h4>
-                                <p className="text-lg text-gray-600">NUS</p>
+                                <h4 className="text-xl font-medium text-gray-900 whitespace-nowrap">{PERSONAL_INFO.degree}</h4>
+                                <p className="text-lg text-gray-600">{PERSONAL_INFO.university}</p>
                             </div>
                         </div>
 

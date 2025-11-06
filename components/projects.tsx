@@ -1,41 +1,11 @@
 "use client";
 
 import { ExternalLink, Github } from "lucide-react";
-
-interface Project {
-    id: number;
-    name: string;
-    description: string;
-    liveUrl?: string;
-    githubUrl?: string;
-}
-
-const projects: Project[] = [
-    {
-        id: 1,
-        name: "CoconutSplit",
-        description: "Expense tracker. 2500+ users. 7000+ transactions. SGD1.5mil.",
-        liveUrl: "https://t.me/coconutsplit_bot",
-        githubUrl: "https://github.com/lvl8studios/coconutsplit"
-    },
-    {
-        id: 2,
-        name: "Gyatword",
-        description: "Won at NUS Hack&Roll 2025 using PyGyat",
-        liveUrl: "https://gyatword.com",
-        githubUrl: "https://github.com/lvl8studios/gyatword"
-    },
-    {
-        id: 3,
-        name: "TicketChain",
-        description: "Tickets but NFTed and on Ethereum",
-        githubUrl: "https://github.com/lionsee77/ticketchain"
-    },
-];
+import { PROJECTS, SECTION_IDS, type Project } from "@/lib/constants";
 
 const Projects = () => {
     return (
-        <section id="projects" className="min-h-screen flex items-center justify-center bg-white py-20">
+        <section id={SECTION_IDS.PROJECTS} className="min-h-screen flex items-center justify-center bg-white py-20">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Title */}
                 <div className="text-center mb-16">
@@ -46,7 +16,7 @@ const Projects = () => {
 
                 {/* Projects List */}
                 <div className="space-y-12">
-                    {projects.map((project) => (
+                    {PROJECTS.map((project: Project) => (
                         <div key={project.id} className="border-b border-gray-200 pb-8 last:border-b-0 last:pb-0">
                             {/* Project Header */}
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
@@ -64,7 +34,7 @@ const Projects = () => {
                                             className="flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200"
                                         >
                                             <ExternalLink className="h-4 w-4 mr-1" />
-                                            <span className="text-sm font-medium">Live Demo</span>
+                                            <span className="text-sm font-medium">Try it</span>
                                         </a>
                                     )}
                                     {project.githubUrl && (
