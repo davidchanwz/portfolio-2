@@ -92,20 +92,20 @@ export const PROJECTS: Project[] = [
     name: "CoconutSplit",
     description: "Expense tracker. 2500+ users. 7000+ transactions. SGD1.5mil.",
     liveUrl: "https://t.me/coconutsplit_bot",
-    githubUrl: "https://github.com/lvl8studios/coconutsplit"
+    // githubUrl: "https://github.com/lvl8studios/coconutsplit"
   },
   {
     id: 2,
     name: "Gyatword",
-    description: "Won at NUS Hack&Roll 2025 using PyGyat",
+    description: "Won at NUS Hack&Roll 2025 with brainrot",
     liveUrl: "https://gyatword.com",
-    githubUrl: "https://github.com/lvl8studios/gyatword"
+    // githubUrl: "https://github.com/lvl8studios/gyatword"
   },
   {
     id: 3,
-    name: "TicketChain",
-    description: "Tickets but NFTed and on Ethereum",
-    githubUrl: "https://github.com/lionsee77/ticketchain"
+    name: "SmartPantry",
+    description: "Played around with RAG and vector stores",
+    githubUrl: "https://github.com/lionsee77/smartpantry"
   },
 ];
 
