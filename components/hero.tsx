@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,8 @@ import Image from "next/image";
 import { PERSONAL_INFO, CONTACT_INFO, CV_INFO, SECTION_IDS } from "@/lib/constants";
 
 const Hero = () => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
     return (
         <section id={SECTION_IDS.HOME} className="min-h-screen flex items-center justify-center bg-white pt-16 sm:pt-20 lg:pt-0">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,8 +18,9 @@ const Hero = () => {
                     <div className="shrink-0">
                         <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-80 lg:h-80">
                             <div className="w-full h-full rounded-full bg-gray-200 border-4 border-white shadow-lg overflow-hidden">
-                                {/* Placeholder for profile image - you'll need to add your actual image */}
-                                <div className="w-full h-full bg-linear-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                                {/* Placeholder for profile image */}
+                                <div className={`w-full h-full bg-linear-to-br from-gray-300 to-gray-400 flex items-center justify-center transition-opacity duration-500 ${imageLoaded ? 'opacity-0' : 'opacity-100'
+                                    }`}>
                                     <span className="text-gray-600 font-semibold text-3xl sm:text-4xl lg:text-6xl">{PERSONAL_INFO.initials}</span>
                                 </div>
 
@@ -24,8 +28,10 @@ const Hero = () => {
                                     src={PERSONAL_INFO.profileImage}
                                     alt={PERSONAL_INFO.profileImageAlt}
                                     fill
-                                    className="object-cover rounded-full"
+                                    className={`object-cover rounded-full transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'
+                                        }`}
                                     priority
+                                    onLoad={() => setImageLoaded(true)}
                                 />
 
                             </div>

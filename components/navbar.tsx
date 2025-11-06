@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
@@ -72,9 +71,6 @@ const Navbar = () => {
                             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                                 <SheetHeader>
                                     <SheetTitle>Menu</SheetTitle>
-                                    <SheetDescription>
-                                        Navigate through the portfolio sections
-                                    </SheetDescription>
                                 </SheetHeader>
                                 <div className="mt-8 space-y-4">
                                     {NAV_ITEMS.map((item) => (
