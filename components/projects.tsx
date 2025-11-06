@@ -31,7 +31,7 @@ const Projects = () => {
                                             href={project.liveUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200"
+                                            className="flex items-center text-gray-600 hover:text-gray-900 transition-all duration-200 hover:underline underline-offset-2"
                                         >
                                             <ExternalLink className="h-4 w-4 mr-1" />
                                             <span className="text-sm font-medium">Try it</span>
@@ -42,7 +42,7 @@ const Projects = () => {
                                             href={project.githubUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200"
+                                            className="flex items-center text-gray-600 hover:text-gray-900 transition-all duration-200 hover:underline underline-offset-2"
                                         >
                                             <Github className="h-4 w-4 mr-1" />
                                             <span className="text-sm font-medium">GitHub</span>
