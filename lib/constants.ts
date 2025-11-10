@@ -24,10 +24,9 @@ export const CONTACT_INFO = {
     display: "github.com/davidchanwz",
   },
 };
-
 // CV/Resume Information
 export const CV_INFO = {
-  googleDriveId: "15XNoAghjm9LAWJTmCOWzbv5dYPdsuHqn",
+  googleDriveId: "1oaBSe-6rpl7c1Asstgn_-P3fRyyn3NpR",
   filename: "David-Chan-CV.pdf",
   get downloadUrl() {
     return `https://drive.google.com/uc?export=download&id=${this.googleDriveId}`;
