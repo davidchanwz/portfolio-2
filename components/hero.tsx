@@ -6,6 +6,7 @@ import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { PERSONAL_INFO, CONTACT_INFO, CV_INFO, SECTION_IDS } from "@/lib/constants";
+import { trackResumeDownload, trackLinkedInClick, trackGitHubClick, trackSectionNavigation } from "@/lib/analytics";
 
 const Hero = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -58,6 +59,7 @@ const Hero = () => {
                                     size="lg"
                                     className="w-full sm:w-auto px-8 py-3 bg-gray-900 hover:bg-gray-700 text-white font-medium rounded-full cursor-pointer transition-all duration-200 hover:scale-105"
                                     onClick={() => {
+                                        trackSectionNavigation('contact');
                                         const element = document.getElementById(SECTION_IDS.CONTACT);
                                         if (element) {
                                             element.scrollIntoView({
@@ -74,6 +76,7 @@ const Hero = () => {
                                     variant="outline"
                                     className="w-full sm:w-auto px-8 py-3 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-medium rounded-full cursor-pointer transition-all duration-200 hover:scale-105"
                                     onClick={() => {
+                                        trackResumeDownload();
                                         // Google Drive direct download link
                                         const link = document.createElement('a');
                                         link.href = CV_INFO.downloadUrl;
@@ -91,12 +94,18 @@ const Hero = () => {
                                 <FontAwesomeIcon
                                     icon={faLinkedin}
                                     className="text-2xl text-blue-600 hover:text-blue-700 cursor-pointer transition-all duration-200 hover:scale-110"
-                                    onClick={() => window.open(CONTACT_INFO.linkedin.url, '_blank')}
+                                    onClick={() => {
+                                        trackLinkedInClick();
+                                        window.open(CONTACT_INFO.linkedin.url, '_blank');
+                                    }}
                                 />
                                 <FontAwesomeIcon
                                     icon={faGithub}
                                     className="text-2xl text-gray-900 hover:text-black cursor-pointer transition-all duration-200 hover:scale-110"
-                                    onClick={() => window.open(CONTACT_INFO.github.url, '_blank')}
+                                    onClick={() => {
+                                        trackGitHubClick();
+                                        window.open(CONTACT_INFO.github.url, '_blank');
+                                    }}
                                 />
                             </div>
                         </div>

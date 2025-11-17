@@ -2,6 +2,7 @@
 
 import { ExternalLink, Github } from "lucide-react";
 import { PROJECTS, SECTION_IDS, type Project } from "@/lib/constants";
+import { trackProjectClick } from "@/lib/analytics";
 
 const Projects = () => {
     return (
@@ -32,6 +33,7 @@ const Projects = () => {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="flex items-center text-gray-600 hover:text-gray-900 transition-all duration-200 hover:underline underline-offset-2"
+                                            onClick={() => trackProjectClick(project.name, 'live')}
                                         >
                                             <ExternalLink className="h-4 w-4 mr-1" />
                                             <span className="text-sm font-medium">Try it</span>
@@ -43,6 +45,7 @@ const Projects = () => {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="flex items-center text-gray-600 hover:text-gray-900 transition-all duration-200 hover:underline underline-offset-2"
+                                            onClick={() => trackProjectClick(project.name, 'github')}
                                         >
                                             <Github className="h-4 w-4 mr-1" />
                                             <span className="text-sm font-medium">GitHub</span>

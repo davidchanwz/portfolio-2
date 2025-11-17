@@ -4,6 +4,7 @@ import { Mail } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { CONTACT_INFO, SECTION_IDS } from "@/lib/constants";
+import { trackContactClick } from "@/lib/analytics";
 
 const Contact = () => {
     return (
@@ -22,6 +23,7 @@ const Contact = () => {
                     <a
                         href={`mailto:${CONTACT_INFO.email}`}
                         className="flex items-center text-gray-700 hover:text-gray-900 transition-all duration-200 group hover:scale-105 hover:underline"
+                        onClick={() => trackContactClick('email')}
                     >
                         <Mail className="h-6 w-6 mr-4 text-gray-600 group-hover:text-gray-900" />
                         <span className="text-xl font-medium">{CONTACT_INFO.email}</span>
@@ -33,6 +35,7 @@ const Contact = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center text-gray-700 hover:text-gray-900 transition-all duration-200 group hover:scale-105 hover:underline"
+                        onClick={() => trackContactClick('linkedin')}
                     >
                         <FontAwesomeIcon icon={faLinkedin} className="text-xl mr-4 text-gray-600 group-hover:text-gray-900" />
                         <span className="text-xl font-medium">{CONTACT_INFO.linkedin.display}</span>
